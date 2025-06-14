@@ -36,9 +36,7 @@ void timer() {
     delay(5000);
     digitalWrite(relay, LOW);
     analogWrite(green_led, 0);
-    analogWrite(yellow_led, 10);
-  }
-
+    analogWrite(yellow_led, 10);}
 }
 
 void loop() {
