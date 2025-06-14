@@ -11,7 +11,6 @@ const int relay = D3;
 const int green_led = D4;
 
 
-
 void setup() {
   Serial.begin(9600);
   pinMode(on_button, INPUT_PULLUP);
@@ -22,12 +21,12 @@ void setup() {
   pinMode(green_led, OUTPUT);
 }
 
+// timer function
 void timer() {
     unsigned long currentMillis = millis();
     if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
     
-    Serial.println("Task executed every 5 minutes");
     delay(100);
     analogWrite(yellow_led, 0);
     analogWrite(red_led, 0);
@@ -38,7 +37,6 @@ void timer() {
     digitalWrite(relay, LOW);
     analogWrite(green_led, 0);
     analogWrite(yellow_led, 10);
-    
   }
 
 }
@@ -46,6 +44,7 @@ void timer() {
 void loop() {
   int off_state = digitalRead(on_button);
   int on_state = digitalRead(off_button);
+  
   if (allow_timer == true) {
   timer();
   }
